@@ -1,0 +1,5 @@
+package com.hostelcheck.backend.entity;
+import jakarta.persistence.*; import java.time.LocalDateTime;
+@Entity @Table(name="fraud_reports")
+public class FraudReport { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id; private Long propertyId; @Column(nullable=false) private Long reporterId; @Column(nullable=false) private String reporterEmail; @Column(nullable=false,length=1200) private String details; @Column(nullable=false) private String status="OPEN"; private LocalDateTime createdAt=LocalDateTime.now(); public FraudReport(){}
+ public Long getId(){return id;} public Long getPropertyId(){return propertyId;} public void setPropertyId(Long v){propertyId=v;} public Long getReporterId(){return reporterId;} public void setReporterId(Long v){reporterId=v;} public String getReporterEmail(){return reporterEmail;} public void setReporterEmail(String v){reporterEmail=v;} public String getDetails(){return details;} public void setDetails(String v){details=v;} public String getStatus(){return status;} public void setStatus(String v){status=v;} public LocalDateTime getCreatedAt(){return createdAt;} }

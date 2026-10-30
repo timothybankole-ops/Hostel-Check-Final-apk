@@ -1,0 +1,3 @@
+package com.hostelcheck.backend.controller;
+import org.springframework.http.*;import org.springframework.web.bind.annotation.*;import java.util.*;
+@RestControllerAdvice public class ApiExceptionHandler { @ExceptionHandler(IllegalArgumentException.class) public ResponseEntity<Map<String,Object>>bad(IllegalArgumentException e){return ResponseEntity.badRequest().body(Map.of("error",e.getMessage()==null?"Invalid request.":e.getMessage()));} @ExceptionHandler(Exception.class) public ResponseEntity<Map<String,Object>>failure(Exception e){return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error","The request could not be completed."));}}
